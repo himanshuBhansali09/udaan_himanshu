@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Native Selfcare Images</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" crossorigin="anonymous" />
+    <script th:inline="javascript">
+        var orientationList = [[${orientationList}]];
+    </script>
+</head>
+<style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+<h1>Form</h1>
+<div class="panel-body">
+    <div class="adv-table">
+        <div class="space15"></div>
+        <table  class="display table table-bordered table-striped" id="userListTable">
+            <thead>
+            <tr>
+                <th style="display:none">Id</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="" th:each= "option,iterator : ${list}">
+                <td style="display:none" th:text="${option.id}"></td>
+                <td th:text="${option.name}"></td>
+                <td>
+                <input type="button" id="edits" value="edit" th:href="@{'#editModal'}" data-toggle="modal" class="ticket-thread-container" th:onclick="refreshEditOption([[${option.id}]],[[${option.name}]])"/>
+                </td>
+                <td>
+                    <input type="button" id="deleted" th:href="@{'#editModal'}" data-toggle="modal" class="ticket-thread-container" th:onclick="refreshEditOption([[${option.id}]],[[${option.name}]])"/>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<script th:src="@{'/javascripts/global-ajax-handler.js'}"></script>-->
+<script th:src="@{'/javascripts/home.js'}"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.21.min.js"></script>
+</body>
+</html>
